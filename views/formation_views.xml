@@ -1,0 +1,116 @@
+<?xml version="1.0" ?>
+<odoo>
+ <data>
+<record model="ir.ui.view" id="FormationForm">
+ 		<field name="name">formation.form</field>
+ 		<field name="model">formation.formation</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+			<form string="formation">
+				<sheet>
+ 				<group>
+ 				<field name="name"/>
+				<field name="prix"/>
+				<field name="categorie"/>
+				<field name="session_id"/>
+			    </group>
+		</sheet>
+ 			</form>
+ 		</field>
+</record>
+<record model="ir.ui.view" id="FormationTree">
+ 		<field name="name">formation.tree</field>
+ 		<field name="model">formation.formation</field>
+ 		<field name="type">tree</field>
+ 		<field name="arch" type="xml">
+			<tree string="formation">
+				<field name="name"/>
+ 				<field name="prix"/>
+ 				<field name="categorie"/>
+
+ 			</tree>
+		</field>
+</record>
+
+<record model="ir.actions.act_window" id="actionFoamtaion">
+ 		<field name="name">Formation</field>
+ 		<field name="res_model">formation.formation</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">tree,form</field>
+</record>
+
+
+<record model="ir.ui.view" id="salleForm">
+ 		<field name="name">Salle.form</field>
+ 		<field name="model">formation.salle</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+ 			
+				<form string="salle">
+				<sheet>
+ 				<group>
+ 					 <field name="name"/>
+					<field name="libre"/>
+					 <field name="nb_place"/>
+				</group>
+				<notebook >
+				<page string="Session">
+					<group>
+					<field name="sessionS_id"/>
+				</group>
+				</page>
+			</notebook >
+			</sheet>
+ 				</form>
+ 				
+ 		</field>
+</record>
+<record model="ir.ui.view" id="SalleTree">
+ 		<field name="name">Salle.tree</field>
+ 		<field name="model">formation.salle</field>
+ 		<field name="type">tree</field>
+ 		<field name="arch" type="xml">
+			<tree string="salle">
+				<field name="name"/>
+ 				<field name="libre"/>
+ 				<field name="nb_place"/>
+ 			</tree>
+		</field>
+</record>
+
+<record model="ir.actions.act_window" id="actionSalle">
+ 		<field name="name">Salle</field>
+ 		<field name="res_model">formation.salle</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">tree,form</field>
+</record>
+
+
+<menuitem 
+        name="Gestion des formation" 
+        id="id_MenuPrincipal" />
+
+<menuitem
+		 id="idSousMenu1" 
+		 parent="id_MenuPrincipal"
+		 name="Fomation management" />
+
+<menuitem 
+	     id="idSousMenu2"
+	     parent="idSousMenu1" 
+	     name="Formation"
+         action="actionFoamtaion"
+         />
+<menuitem 
+	     id="idSousMenu3"
+	     parent="idSousMenu1" 
+	     name="Salle"
+         action="actionSalle"
+         />
+
+
+         
+
+
+ </data>
+</odoo>

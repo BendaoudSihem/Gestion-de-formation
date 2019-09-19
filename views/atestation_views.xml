@@ -1,0 +1,79 @@
+<?xml version="1.0" ?>
+<odoo>
+ <data>
+ Déclaration des éléments de l’interface : menus, actions, vues, etc.
+
+
+
+<record model="ir.ui.view" id="atestationForm">
+ 		<field name="name">Atestation.form</field>
+ 		<field name="model">formation.atestation</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+			<form string="atestation">
+ 				<sheet>
+ 				<group string="Atestation">
+ 				 <field name="condidat"/>
+				 <field name="description"/>
+				 <field name="date"/>
+				 <field name="formation"/>
+				 
+
+			</group>
+			<group string="Autre information...">
+			<notebook >
+				<page string="Formation">
+					<group>
+					<field name="formation"/>
+				</group>
+				</page>
+				<page string="condidat">
+					<group>
+					<field name="condidat"/>
+				</group>
+				</page>
+				
+			
+			</notebook>
+		</group>
+		</sheet>
+			</form>
+ 		</field>
+</record>
+<record model="ir.ui.view" id="atestationTree">
+ 		<field name="name">Atestation.tree</field>
+ 		<field name="model">formation.atestation</field>
+ 		<field name="type">tree</field>
+ 		<field name="arch" type="xml">
+			<tree string="Atestation">
+				<field name="condidat"/>
+ 				<field name="description"/>
+ 				<field name="date"/>
+ 				<field name="formation"/>
+ 				
+ 				
+ 			</tree>
+		</field>
+</record>
+
+<record model="ir.actions.act_window" id="actionAtestation">
+ 		<field name="name">Atestation</field>
+ 		<field name="res_model">formation.atestation</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">tree,form</field>
+</record>
+
+
+
+
+
+
+<menuitem 
+	     id="idSou3"
+	     parent="id_MenuPrincipal" 
+	     name="Atestation"
+         action="actionAtestation"
+         />
+
+ </data>
+</odoo>

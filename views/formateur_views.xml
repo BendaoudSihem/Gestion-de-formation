@@ -1,0 +1,178 @@
+<?xml version="1.0" ?>
+<odoo>
+ <data>
+
+<record model="ir.ui.view" id="FormateurTree">
+ 		<field name="name">Condidat.tree</field>
+ 		<field name="model">formation.condidat</field>
+ 		<field name="type">tree</field>
+ 		<field name="arch" type="xml">
+			<tree string="Condidat">
+				<field name="name"/>
+ 				<field name="num_ins"/>
+ 				
+ 			</tree>
+		</field>
+</record>
+<record model="ir.ui.view" id="CondidatKanban">
+ 		<field name="name">Condidat.form</field>
+ 		<field name="model">formation.condidat</field>
+ 		
+ 		 <field name="arch" type="xml">
+		 <kanban>
+			<templates>
+				<t t-name="kanban-box">
+					<div class="oe_module_vignette" style="background:#EEE">
+							<div class="oe_module_desc">
+								
+								<ul>
+									<li><strong><field name="name"/></strong></li>
+									<li><strong><field name="num_ins"/></strong></li>
+									
+
+								</ul>
+							</div>
+ 				     </div>
+                </t>
+			</templates>
+		</kanban>
+ 		</field>
+</record>
+
+<record model="ir.ui.view" id="CondidatForm">
+ 		<field name="name">Condidat.form</field>
+ 		<field name="model">formation.condidat</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+			<form string="condidat">
+				<sheet>
+ 				<group>
+ 				 <field name="name"/>
+				<field name="num_ins"/>
+			</group>
+			<notebook >
+				<page string="Session">
+					<group>
+					<field name="sessionCo_id"/>
+				</group>
+				</page>
+			</notebook >
+				</sheet>
+
+ 			</form>
+ 		</field>
+</record>
+
+
+<record model="ir.actions.act_window" id="actionCondidat">
+ 		<field name="name">Condidat</field>
+ 		<field name="res_model">formation.condidat</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">tree,form,kanban</field>
+</record>
+
+
+<record model="ir.ui.view" id="FormateurTree">
+ 		<field name="name">formateur.tree</field>
+ 		<field name="model">formation.formateur</field>
+ 		<field name="type">tree</field>
+ 		<field name="arch" type="xml">
+			<tree string="Formateur">
+				<field name="name"/>
+ 				<field name="matricule"/>
+ 				<field name="diplome"/>
+ 			</tree>
+		</field>
+</record>
+<record model="ir.ui.view" id="FormateurKanban">
+ 		<field name="name">formateur.form</field>
+ 		<field name="model">formation.formateur</field>
+ 		
+ 		 <field name="arch" type="xml">
+		 <kanban>
+			<templates>
+				<t t-name="kanban-box">
+					<div class="oe_module_vignette" style="background:#EEE">
+							<div class="oe_module_desc">
+								
+								<ul>
+									<li><strong><field name="name"/></strong></li>
+									<li><strong><field name="matricule"/></strong></li>
+									<li><strong><field name="diplome"/></strong></li>
+
+								</ul>
+							</div>
+ 				     </div>
+                </t>
+			</templates>
+		</kanban>
+ 		</field>
+</record>
+
+<record model="ir.ui.view" id="FormateurForm">
+ 		<field name="name">formateur.form</field>
+ 		<field name="model">formation.formateur</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+			<form string="Formateur">
+				<sheet>
+				<group>
+ 				 <field name="name"/>
+				 <field name="matricule"/>
+				 <field name="diplome"/>
+				</group>
+				<notebook >
+				<page string="Session">
+					<group>
+					<field name="sessionfo_id"/>
+				</group>
+				</page>
+			</notebook >
+			</sheet>
+ 			</form>
+ 		</field>
+</record>
+
+
+<record model="ir.ui.view" id="FormateurSearch">
+      <field name="name">formateur.search</field>
+      <field name="model">formation.formateur</field>
+      <field name="arch" type="xml">
+        <search string="Les formateur">
+          <field name="name" />
+          <filter name="filter_see_all" string="All" domain="['|', ('active', '=',True), ('active', '=',False)]" />
+          <filter name="filter_see_active" string="Active" domain="[('active', '=',True)]" />
+          <filter name="filter_see_inactive" string="Inactive" domain="[('active', '=',False)]" />
+        </search>
+      </field>
+    </record>
+
+
+<record model="ir.actions.act_window" id="actionFormateur">
+ 		<field name="name">Formateur</field>
+ 		<field name="res_model">formation.formateur</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">tree,form,kanban,search</field>
+</record>
+
+
+
+<menuitem
+		 id="idSousMen1" 
+		 parent="id_MenuPrincipal"
+		 name="Fomateur management" />
+
+<menuitem 
+	     id="idSousMen2"
+	     parent="idSousMen1"
+	     name="Formateur"
+         action="actionFormateur"
+         />
+<menuitem 
+	     id="idSousMen"
+	     parent="idSousMen1"
+	     name="Condidat"
+         action="actionCondidat"
+         />
+ </data>
+</odoo>

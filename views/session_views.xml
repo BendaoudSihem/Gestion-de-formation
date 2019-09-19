@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<odoo>
+ <data>
+ Déclaration des éléments de l’interface : menus, actions, vues, etc.
+<record model="ir.ui.view" id="SessionKanban">
+ 		<field name="name">Session.kanban</field>
+ 		<field name="model">formation.session</field>
+ 		
+ 		 <field name="arch" type="xml">
+		 <kanban>
+			<templates>
+				<t t-name="kanban-box">
+					<div class="oe_module_vignette" style="background:#EEE">
+							<div class="oe_module_desc">
+								
+								<ul>
+									<li><strong><field name="name"/></strong></li>
+									<li><strong><field name="nb_participant"/></strong></li>
+									<li><strong><field name="date_debut"/></strong></li>
+									<li><strong><field name="date_fin"/></strong></li>
+									<li><strong><field name="duree"/></strong></li>
+									<li><strong><field name="state"/></strong></li>
+
+									
+
+								</ul>
+							</div>
+ 				     </div>
+                </t>
+			</templates>
+		</kanban>
+ 		</field>
+</record>
+
+
+<record model="ir.ui.view" id="FormationForm">
+ 		<field name="name">Session.form</field>
+ 		<field name="model">formation.session</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+			<form string="session">
+				<header>
+				<button type="object" name="open" string="Etat" style="background:#7c7bad;color:white"/>
+				<button type="action" name="%(wizard_create_id)d" string="Creer Atestation" style="background:#7c7bad;color:white"  groups="base.group_system,gestion_formation.group_gerant"/>
+				 <field name="state" widget="statusbar" statusbar_visible="a,b" clickable="1"/>
+			   </header>
+ 				<sheet>
+ 				<group string="Session">
+ 				 <field name="name"/>
+				 <field name="nb_participant"/>
+				 <field name="date_debut"/>
+				 <field name="date_fin"/>
+				 <field name="duree"/>
+				 <field name="formation_id" on_change="onchange_C()"/>
+				 <field name="categorie"/>
+				 
+
+			</group>
+			<group string="Autre information...">
+			<notebook >
+				<page string="Formateur">
+					<group>
+					<field name="formateur_id"/>
+				</group>
+				</page>
+				<page string="Salle">
+					<group>
+					<field name="salle_id"/>
+				</group>
+				</page>
+				<page string="Condidat">
+					<group>
+					<field name="condidat_id"/>
+				</group>
+				</page>
+			
+			</notebook>
+		</group>
+	
+
+		</sheet>
+			</form>
+ 		</field>
+</record>
+
+<record model="ir.ui.view" id="sessionTree">
+ 		<field name="name">Session.tree</field>
+ 		<field name="model">formation.session</field>
+ 		<field name="type">tree</field>
+ 		<field name="arch" type="xml">
+			<tree string="Session">
+				<field name="name"/>
+ 				<field name="nb_participant"/>
+ 				<field name="date_debut"/>
+ 				<field name="date_fin"/>
+ 				<field name="duree"/>
+ 				<field name="state"/>
+ 			    
+
+ 				
+ 			</tree>
+		</field>
+</record>
+
+<record model="ir.actions.act_window" id="actionSession">
+ 		<field name="name">Session</field>
+ 		<field name="res_model">formation.session</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">tree,form,kanban</field>
+</record>
+
+
+
+
+
+
+<menuitem 
+	     id="idSou2"
+	     parent="id_MenuPrincipal" 
+	     name="Session"
+         action="actionSession"
+         />
+
+ </data>
+</odoo>

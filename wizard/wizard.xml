@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<odoo>
+ <data>
+
+<record model="ir.ui.view" id="wizard_create_id_form">
+ 		<field name="name">AtestationW.form</field>
+ 		<field name="model">formation.wizard</field>
+ 		<field name="type">form</field>
+ 		<field name="arch" type="xml">
+			<form string="Atestation">
+ 				<sheet>
+ 				<group string="Atestation">
+				 <field name="description"/>
+				 <field name="date"/>
+				 <field name="condidat_id"/>
+				
+			</group>
+			<footer>
+			 <button name="confirmer" string="confirmer" type="object" class="oe_highlight"/>
+			ou
+			<button string="Annuler" class="oe_link" special="cancel"/>
+		</footer>
+			
+		</sheet>
+			</form>
+ 		</field>
+</record>
+<record model="ir.actions.act_window" id="wizard_create_id">
+ 		<field name="name">AtestationW</field>
+ 		<field name="res_model">formation.wizard</field>
+ 		<field name="target">new</field>
+ 		<field name="view_type">form</field>
+ 		<field name="view_mode">form</field>
+</record>
+
+
+
+
+
+
+
+
+
+ </data>
+</odoo>
